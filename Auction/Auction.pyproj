@@ -30,6 +30,13 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AuctionAPP\admin.py" />
+    <Compile Include="AuctionAPP\apps.py" />
+    <Compile Include="AuctionAPP\migrations\__init__.py" />
+    <Compile Include="AuctionAPP\models.py" />
+    <Compile Include="AuctionAPP\tests.py" />
+    <Compile Include="AuctionAPP\views.py" />
+    <Compile Include="AuctionAPP\__init__.py" />
     <Compile Include="manage.py" />
     <Compile Include="Auction\__init__.py" />
     <Compile Include="Auction\settings.py" />
@@ -37,9 +44,14 @@
     <Compile Include="Auction\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AuctionAPP\templates\AuctionAPP\index.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="AuctionAPP\" />
+    <Folder Include="AuctionAPP\migrations\" />
+    <Folder Include="AuctionAPP\templates\" />
+    <Folder Include="AuctionAPP\templates\AuctionAPP\" />
     <Folder Include="Auction\" />
   </ItemGroup>
   <ItemGroup>

@@ -1,21 +1,40 @@
-"""
-Definition of urls for Auction.
-"""
+from django.conf.urls import patterns, include, url
+from AuctionApp.views import *
+from django.views.decorators.csrf import csrf_exempt
 
-from django.conf.urls import include, url
+from django.contrib import admin
+admin.autodiscover()
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+urlpatterns = patterns('',
 
-urlpatterns = [
-    # Examples:
-    # url(r'^$', Auction.views.home, name='home'),
-    # url(r'^Auction/', include('Auction.Auction.urls')),
+    #url(r'^', include('AuctionApp.urls')),
+    (r'^home/$', home),
+    (r'^createuser/$', register),
+    (r'^login/$', login),
+    (r'^logout/$', logout),
+    (r'^edituser/$',edit_user_info),
+    (r'^addauction/$',add_auction),
+    (r'^saveauction/$',save_auction),
+    (r'^editauction/(?P<id>\w+)/$', edit_auction),
+    (r'^saveeditedauction/(?P<id>\w+)/$',save_edited_auction),
+    (r'^canceledit/(?P<id>\w+)/$',canceledit),
+    (r'^auction/(?P<id>\w+)/$', view_auction),
+    (r'^banauction/(?P<id>\w+)/$', ban_auction),
+    (r'^changelang/$', changelang),
+    (ur'^search/(\w+)/$', search),
+    (ur'^search/$', search),
+    (r'^bidauction/(?P<id>\w+)/$', bid_auction),
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
-    # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-]
+
+    #url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+
+    (ur'^api/v1/search/$', apisearch),
+    (ur'^api/v1/search/(\w+)/$', apisearch),
+
+    (ur'^api/v2/bid/(?P<id>\w+)/$', apibid),
+
+
+
+    url(r'^admin/', include(admin.site.urls)),
+)
